@@ -3,9 +3,12 @@ function beforeWays() {
 }
 
 function ways() {
-	cway++;
+    cway++;
     addUser(this.uid,this.user);
     users[this.uid].ways+=1;
+    /*if("building" in this.tags)
+        if(this.tags["building"]=='yes') buildingyes+=1;
+        else buildingother+=1;*/
 }
 
 function afterWays() {
@@ -13,7 +16,14 @@ function afterWays() {
 }
 
 function area() {
-	carea++;
     addUser(this.uid,this.user);
-    users[this.uid].areas+=1;
+	/* probably double counts ways and areas */
+    if(this.from=="way"){
+    users[this.uid].areaways+=1;
+    careaway++;
+    }
+    if(this.from=="relation"){
+    users[this.uid].arearels+=1;
+    carearel++;
+    }
 }

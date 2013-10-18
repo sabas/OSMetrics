@@ -8,4 +8,5 @@ var users = [];
 var importusers=[];
 
 /* building=yes vs building=*, TODO */
-var buildingyes=0,buildingother=0;
+var building={};
+var cbui=0;

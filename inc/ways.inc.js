@@ -6,9 +6,13 @@ function ways() {
     cway++;
     addUser(this.uid,this.user);
     users[this.uid].ways+=1;
-    /*if("building" in this.tags)
-        if(this.tags["building"]=='yes') buildingyes+=1;
-        else buildingother+=1;*/
+
+    cbui++;
+    for(var key in this.tags) {
+        if (key.match(/building/i)) {
+            building[this.tags[key]] = isNaN(building[this.tags[key]]) ? 1 : building[this.tags[key]] + 1; 
+        }
+    }
 }
 
 function afterWays() {
@@ -17,7 +21,7 @@ function afterWays() {
 
 function area() {
     addUser(this.uid,this.user);
-	/* probably double counts ways and areas */
+    /* probably double counts ways and areas */
     if(this.from=="way"){
     users[this.uid].areaways+=1;
     careaway++;
@@ -25,5 +29,12 @@ function area() {
     if(this.from=="relation"){
     users[this.uid].arearels+=1;
     carearel++;
+    }
+
+    cbui++;
+    for(var key in this.tags) {
+        if (key.match(/building/i)) {
+            building[this.tags[key]] = isNaN(building[this.tags[key]]) ? 1 : building[this.tags[key]] + 1; 
+        }
     }
 }

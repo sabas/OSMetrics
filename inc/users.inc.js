@@ -7,6 +7,7 @@ function User(uid,name) {
     this.areaways=0;
     this.arearels=0;
     this.relations=0;
+    this.lastedit=0;
 }
 
 User.prototype.rank = function(){return this.nodes*ranking.nodes + this.ways*ranking.ways+ this.relations*ranking.relations+ this.areaways*ranking.areas+ this.arearels*ranking.areas};
@@ -24,3 +25,4 @@ function addUser(uid,user){
         users[uid] = new User(uid,user);
     }
 }
+

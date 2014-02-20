@@ -7,12 +7,14 @@ function ways() {
     addUser(this.uid,this.user);
     users[this.uid].ways+=1;
 
-    cbui++;
     for(var key in this.tags) {
         if (key.match(/building/i)) {
+    	    cbui++;
             building[this.tags[key]] = isNaN(building[this.tags[key]]) ? 1 : building[this.tags[key]] + 1; 
         }
     }
+    var d=new Date(this.timestamp).getTime() / 1000;
+    if(d>users[this.uid].lastedit) users[this.uid].lastedit=d;
 }
 
 function afterWays() {
@@ -31,10 +33,13 @@ function area() {
     carearel++;
     }
 
-    cbui++;
+
     for(var key in this.tags) {
         if (key.match(/building/i)) {
+    	    cbui++;
             building[this.tags[key]] = isNaN(building[this.tags[key]]) ? 1 : building[this.tags[key]] + 1; 
         }
     }
+    var d=new Date(this.timestamp).getTime() / 1000;
+    if(d>users[this.uid].lastedit) users[this.uid].lastedit=d;
 }

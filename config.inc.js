@@ -7,6 +7,10 @@ var users = [];
 /* add a list of user accounts which do imports, TODO */
 var importusers=[];
 
-/* building=yes vs building=*, TODO */
+/* building=yes vs building=* */
 var building={};
 var cbui=0;
+
+/* relations */
+
+var relation_types = {};

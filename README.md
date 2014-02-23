@@ -25,6 +25,10 @@ Features
 --------
 
 Callbacks are grouped in include files.
-Supporting functions are grouped by topics (users.inc.js f.e.)
 
+- Totals: csv contains global counts (total number of nodes, ways etcetera)
 - User Ladder: csv with nodes, ways, relations, areas and the calculated rank
+- Buildings: all the building values
+- Relations: all the relation types
+- Road Lenghts: a calculation done on the navigable road network
+

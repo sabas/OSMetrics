@@ -5,6 +5,9 @@ print("Count rel "+crel);
 print("Count area "+careaway);
 print("Count area rel "+carearel);
 print("Count buildings "+cbui);
+print('Highway count '+croad);
+print('Navigable highway count '+cnavi);
+print('TOTAL LENGTH ->'+roadlength);
 
 users.sort(sort_by_rank);
 
@@ -16,6 +19,8 @@ out.print("Count rel",crel);
 out.print("Count area",careaway);
 out.print("Count area rel",carearel);
 out.print("Count buildings",cbui);
+out.print('Highway count',croad);
+out.print('Navigable highway count',cnavi);
 out.close();
 
 
@@ -38,6 +43,13 @@ var out = Osmium.Output.CSV.open(dir + 'relations.csv');
 out.print('type\tcount');
     for (var type in relation_types) {
         out.print(type,relation_types[type]);
+        }
+out.close();
+
+var out = Osmium.Output.CSV.open(dir + 'roadlengths.csv');
+out.print('type\tcount');
+    for (var len in lengths) {
+        out.print(len,lengths[len]);
         }
 out.close();
 

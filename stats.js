@@ -1,7 +1,7 @@
 include("config.inc.js");
 
-/* user functions */
-include("inc/users.inc.js");
+/* functions */
+include("inc/utils.js");
 
 include("inc/start.inc.js");
     Osmium.Callbacks.init = start

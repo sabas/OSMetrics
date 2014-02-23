@@ -26,3 +26,37 @@ function addUser(uid,user){
     }
 }
 
+function Node(id,lat,lon){
+    this.id=id;
+    this.lat=lat;
+    this.lon=lon;
+}
+
+function addNode(id,node){
+    if(!nodes[id]) {
+        nodes[id] = new Node(id,node.geom.lat,node.geom.lon);
+    }
+}
+
+if (typeof(Number.prototype.toRad) === "undefined") {
+  Number.prototype.toRad = function() {
+    return this * Math.PI / 180;
+  }
+}
+
+function haversine(node1,node2)
+{
+    var lat1=node1[1].toRad();
+    var lat2=node2[1].toRad();
+    var lon1=node1[0].toRad();
+    var lon2=node2[0].toRad();
+    var R = 6371;
+
+    var dlat = (lat2-lat1);
+    var dlon = (lon2-lon1);
+
+		var a  = Math.pow(Math.sin(dlat/2),2) + Math.cos(lat1) * Math.cos(lat2) * Math.pow(Math.sin(dlon/2),2);
+		var c  = 2 * Math.atan2(Math.sqrt(a),Math.sqrt(1-a));
+		var dk = c * R;
+    return dk;
+}

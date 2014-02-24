@@ -46,17 +46,22 @@ if (typeof(Number.prototype.toRad) === "undefined") {
 
 function haversine(node1,node2)
 {
-    var lat1=node1[1].toRad();
-    var lat2=node2[1].toRad();
-    var lon1=node1[0].toRad();
-    var lon2=node2[0].toRad();
-    var R = 6371;
+    var lat1=node1[1]; //y
+    var lat2=node2[1];
+    var lon1=node1[0]; //x
+    var lon2=node2[0];
+    var R = 6372797.560856;
 
-    var dlat = (lat2-lat1);
-    var dlon = (lon2-lon1);
+    var dlat = (lat2-lat1).toRad();
+    var dlon = (lon2-lon1).toRad();
 
-		var a  = Math.pow(Math.sin(dlat/2),2) + Math.cos(lat1) * Math.cos(lat2) * Math.pow(Math.sin(dlon/2),2);
-		var c  = 2 * Math.atan2(Math.sqrt(a),Math.sqrt(1-a));
-		var dk = c * R;
-    return dk;
+	var lonh=Math.sin(dlon*0.5);
+	lonh*=lonh;
+	
+	var lath=Math.sin(dlat*0.5);
+	lath*=lath;
+	
+	var tmp= Math.cos(lat1.toRad())*Math.cos(lat2.toRad());
+
+    return 2*R*Math.asin(Math.sqrt(lath+tmp*lonh));
 }

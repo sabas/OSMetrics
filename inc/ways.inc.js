@@ -7,7 +7,7 @@ function ways() {
     addUser(this.uid,this.user);
     users[this.uid].ways+=1;
 
-    var navi='NULL';
+    var khigh='NULL';
     for(var key in this.tags) {
         if (key.match(/building/i)) {
     	    cbui++;
@@ -15,29 +15,28 @@ function ways() {
         }
         if (key.match(/highway/i)) {
             croad+=1;
+            khigh=this.tags[key];
             if (navigablehighwayvalues.indexOf(this.tags[key]) > -1)
             {
             cnavi += 1;
-            navi=this.tags[key];
             }
 	    }
     }
     var d=new Date(this.timestamp).getTime() / 1000;
     if(d>users[this.uid].lastedit) users[this.uid].lastedit=d;
 
+    if(khigh!='NULL'){
     var points=this.geom.toArray();
-
-    if(navi!='NULL')
-    {
+        if(points[0][0]==0 || points[0][1]==0 || points[1][0]==0 || points[1][1]==0) { print("id "+this.id+": Node in null island"); return;}
     var len=0;
     for (var i=0;i<points.length-1;i++)
     {
-        if(points[0][0]==0 || points[0][1]==0 || points[1][0]==0 || points[1][1]==0) { print("Node in null island"); continue;}
         var distance=haversine(points[i],points[i+1]);
         len+=distance;
     }
-    if (!lengths[navi]) lengths[navi]=0;
-    lengths[navi]+=len;
+    if (!lengths[khigh]) lengths[khigh]=0;
+    len=len/1000; //km instead of m
+    lengths[khigh]+=len;
     roadlength+=len;
     }
 }

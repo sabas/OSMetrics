@@ -49,7 +49,8 @@ out.close();
 var out = Osmium.Output.CSV.open(dir + 'roadlengths.csv');
 out.print('type\tcount');
     for (var len in lengths) {
-        out.print(len,lengths[len]);
+	var l=lengths[len].toFixed(3);
+        out.print(len,l);
         }
 out.close();
 

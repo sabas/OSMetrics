@@ -9,8 +9,10 @@ function ways() {
 
     var khigh='NULL';
     for(var key in this.tags) {
-        if (key.match(/building/i)) {
+		//if(key=="amenity") print(key+this.tags[key]+' '+key.match(/^building$/i));
+        if (key==="building") {
     	    cbui++;
+    	    print(key+' '+this.tags[key]+' '+this.id);
             building[this.tags[key]] = isNaN(building[this.tags[key]]) ? 1 : building[this.tags[key]] + 1; 
         }
         if (key.match(/highway/i)) {
@@ -59,7 +61,7 @@ function area() {
 
 
     for(var key in this.tags) {
-        if (key.match(/building/i)) {
+        if (key==="building") {
     	    cbui++;
             building[this.tags[key]] = isNaN(building[this.tags[key]]) ? 1 : building[this.tags[key]] + 1; 
         }

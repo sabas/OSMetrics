@@ -9,10 +9,8 @@ function ways() {
 
     var khigh='NULL';
     for(var key in this.tags) {
-		//if(key=="amenity") print(key+this.tags[key]+' '+key.match(/^building$/i));
         if (key==="building") {
     	    cbui++;
-    	    print(key+' '+this.tags[key]+' '+this.id);
             building[this.tags[key]] = isNaN(building[this.tags[key]]) ? 1 : building[this.tags[key]] + 1; 
         }
         if (key.match(/highway/i)) {
@@ -44,6 +42,7 @@ function ways() {
 }
 
 function afterWays() {
+	roadlength=roadlength.toFixed(3);
     print('Ended processing ways and areas');
 }
 
@@ -58,7 +57,6 @@ function area() {
     users[this.uid].arearels+=1;
     carearel++;
     }
-
 
     for(var key in this.tags) {
         if (key==="building") {

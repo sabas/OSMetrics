@@ -2,7 +2,8 @@ OSMetrics
 =========
 
 Yet another OSMJS script.
-This is starting from the OSMQualityMetrics by mvexel (https://github.com/mvexel/OSMQualityMetrics).
+This is starting from the OSMQualityMetrics code by mvexel (https://github.com/mvexel/OSMQualityMetrics),
+expanding to add new metrics.
 
 Usage
 -----
@@ -30,5 +31,4 @@ Callbacks are grouped in include files.
 - User Ladder: csv with nodes, ways, relations, areas and the calculated rank
 - Buildings: all the building values
 - Relations: all the relation types
-- Road Lenghts: a calculation done on the navigable road network
-
+- Road Lengths: a calculation done on the navigable road network

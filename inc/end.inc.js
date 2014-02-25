@@ -1,13 +1,17 @@
 function end() {
+t1=new Date();
+print('Time elapsed '+(t1-t0)+' ms');
+print('End!');
+print("TOTALS");
 print("Count node "+cnode);
 print("Count way "+cway);
-print("Count rel "+crel);
+print("Count relations "+crel);
 print("Count area "+careaway);
-print("Count area rel "+carearel);
+print("Count area relations "+carearel);
 print("Count buildings "+cbui);
 print('Highway count '+croad);
 print('Navigable highway count '+cnavi);
-print('TOTAL LENGTH ->'+roadlength);
+print('Road network length '+roadlength +' km');
 
 users.sort(sort_by_rank);
 
@@ -49,10 +53,8 @@ out.close();
 var out = Osmium.Output.CSV.open(dir + 'roadlengths.csv');
 out.print('type\tcount');
     for (var len in lengths) {
-	var l=lengths[len].toFixed(3);
+		var l=lengths[len].toFixed(3);
         out.print(len,l);
         }
 out.close();
-
-    print('End!');
 }

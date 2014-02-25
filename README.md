@@ -1,16 +1,39 @@
 OSMetrics
 =========
 
-Yet another OSMJS script.
-This is starting from the OSMQualityMetrics code by mvexel (https://github.com/mvexel/OSMQualityMetrics),
+An OSMjs script to calculate raw statistics from an OSM extract (*.osm, *.osm.bz2, *.pbf).
+
+This is starting from the [OSMQualityMetrics](https://github.com/mvexel/OSMQualityMetrics) code by mvexel,
 expanding to add new metrics.
+
+Compiling
+---------
+
+To use this scripts you need osmjs, which is part of [osmium](https://github.com/joto/osmium).
+Ubuntu packages:
+```
+sudo apt-get install g++ libboost-dev zlib1g-dev libshp-dev libgd2-xpm-dev 
+    libgdal1-dev libexpat1-dev libgeos++-dev libsparsehash-dev 
+    libv8-dev libicu-dev libprotobuf-dev protobuf-compiler doxygen
+    libboost-test-dev libosmpbf-dev
+```
+
+Installing osmium and compiling osmjs:
+```
+git clone https://github.com/joto/osmium.git
+cd osmium/
+make doc
+sudo make install
+cd osmjs/
+make
+sudo make install
+```
 
 Usage
 -----
 
-Prerequisites are osmium framework (https://github.com/joto/osmium) and its javascript bindings (osmjs).
-
-To run it, place the extract to be examined in the script folder and run
+Git clone or download and extract this repository in a folder, enter in it
+and place the extract to be examined in the script folder and run
 ```
 osmjs -j stats.js -m -l sparsetable region.pbf 2> out/error.txt
 ```

@@ -65,3 +65,18 @@ function haversine(node1,node2)
 
     return 2*R*Math.asin(Math.sqrt(lath+tmp*lonh));
 }
+
+function sortObject(obj) {
+    var arr = [];
+    for (var prop in obj) {
+        if (obj.hasOwnProperty(prop)) {
+            arr.push({
+                'key': prop,
+                'value': obj[prop]
+            });
+        }
+    }
+    arr.sort(function(a, b) { return b.value - a.value; });
+    return arr; // returns array
+}
+

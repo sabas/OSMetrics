@@ -13,8 +13,7 @@ print('Highway count '+croad);
 print('Navigable highway count '+cnavi);
 print('Road network length '+roadlength +' km');
 
-users.sort(sort_by_rank);
-
+/*totals*/
 var out = Osmium.Output.CSV.open(dir + 'totals.csv');
 out.print('parameter\tvalue');
 out.print("Count node",cnode);
@@ -27,7 +26,8 @@ out.print('Highway count',croad);
 out.print('Navigable highway count',cnavi);
 out.close();
 
-
+/*user ladder*/
+users.sort(sort_by_rank);
 var out = Osmium.Output.CSV.open(dir + 'userladder.csv');
 out.print('uid\tusername\trank\tnodes\tways\trelations\tareas_way\tareas_rel\tlastedit');
     for (var i=0;i<users.length;i++) {
@@ -36,25 +36,30 @@ out.print('uid\tusername\trank\tnodes\tways\trelations\tareas_way\tareas_rel\tla
         }
 out.close();
 
+/*buildings*/
+building=sortObject(building);
 var out = Osmium.Output.CSV.open(dir + 'buildings.csv');
 out.print('building\tcount');
-    for (var type in building) {
-        out.print(type,building[type]);
-        }
+	for(var i=0;i<building.length;i++){
+        out.print(building[i]['key'],building[i]['value']);
+    }
 out.close();
 
+/*relations*/
+relation_types=sortObject(relation_types);
 var out = Osmium.Output.CSV.open(dir + 'relations.csv');
 out.print('type\tcount');
-    for (var type in relation_types) {
-        out.print(type,relation_types[type]);
+	for(var i=0;i<relation_types.length;i++){
+        out.print(relation_types[i]['key'],relation_types[i]['value']);
         }
 out.close();
 
+/*road length*/
+lengths=sortObject(lengths);
 var out = Osmium.Output.CSV.open(dir + 'roadlengths.csv');
 out.print('type\tcount');
-    for (var len in lengths) {
-		var l=lengths[len].toFixed(3);
-        out.print(len,l);
+	for(var i=0;i<lengths.length;i++){
+        out.print(lengths[i]['key'],lengths[i]['value'].toFixed(3));
         }
 out.close();
 }

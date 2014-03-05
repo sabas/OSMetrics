@@ -29,6 +29,11 @@ make
 sudo make install
 ```
 
+Installing this project (in another folder, for instance in home)
+```
+git clone https://github.com/sabas/OSMetrics.git
+cd OSMetrics/
+```
 Usage
 -----
 

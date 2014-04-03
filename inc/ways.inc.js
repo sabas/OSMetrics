@@ -57,13 +57,6 @@ function area() {
     users[this.uid].arearels+=1;
     carearel++;
     }
-
-    for(var key in this.tags) {
-        if (key==="building") {
-    	    cbui++;
-            building[this.tags[key]] = isNaN(building[this.tags[key]]) ? 1 : building[this.tags[key]] + 1; 
-        }
-    }
     var d=new Date(this.timestamp).getTime() / 1000;
     if(d>users[this.uid].lastedit) users[this.uid].lastedit=d;
 }

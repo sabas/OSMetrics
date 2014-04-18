@@ -1,0 +1,16 @@
+type,count
+restriction,973
+boundary,390
+multipolygon,360
+route,130
+destination_sign,35
+place,20
+dual_carriageway,14
+site,6
+circuit,3
+tunnel,2
+network,2
+bridge,2
+composite_Attribute,1
+defaults,1
+golf_course,1

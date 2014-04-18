@@ -30,10 +30,10 @@ out.close();
 /*user ladder*/
 users.sort(sort_by_rank);
 var out = Osmium.Output.CSV.open(dir + 'userladder.csv');
-out.print('uid\tusername\trank\tnodes\tways\trelations\tareas_way\tareas_rel\tlastedit');
+out.print('uid,tusername,rank,nodes,ways,relations,areas_way,areas_rel,lastedit');
     for (var i=0;i<users.length;i++) {
         if(typeof(users[i])=='undefined') continue;
-        out.print(users[i].uid, users[i].name, users[i].rank(), users[i].nodes, users[i].ways, users[i].relations, users[i].areaways, users[i].arearels, users[i].lastedit);
+        out.print(users[i].uid+","+users[i].name+","+users[i].rank()+","+users[i].nodes+","+users[i].ways+","+ users[i].relations+","+users[i].areaways+","+users[i].arearels+","+users[i].lastedit);
         }
 out.close();
 
